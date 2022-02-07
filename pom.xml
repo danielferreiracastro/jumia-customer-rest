@@ -195,11 +195,14 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/target/</outputDirectory>
+							<outputDirectory>${basedir}/target/resources</outputDirectory>
 							<resources>
 								<resource>
 									<directory>resources</directory>
 									<filtering>true</filtering>
+									<includes>
+										<include>sample.db</include>
+									</includes>
 								</resource>
 							</resources>
 						</configuration>

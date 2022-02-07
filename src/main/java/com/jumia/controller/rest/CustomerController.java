@@ -25,14 +25,17 @@ import com.jumia.db.model.Customer;
 import com.jumia.db.model.CustomerView;
 import com.jumia.db.repositories.ICustomerRepository;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/v1")
-@Api(value = "Endpoint to retrieve a list of customers.")
+@OpenAPIDefinition(info = @Info(title = "Customer API", version = "2.0", description = "Customer Information"))
 public class CustomerController {
 	Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
@@ -45,9 +48,11 @@ public class CustomerController {
 
 	@CrossOrigin
 	@GetMapping(path = "/customers", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ApiOperation(value = "API to GET list of customers filtered or not")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "List retrieve success"),
-			@ApiResponse(code = 204, message = "List has no contents") })
+	@Operation(summary = "Get the customers", description = "Get the customers using pagination and filtert", tags = { "CustomerView" })
+	@ApiResponses(value = {
+	        @ApiResponse(responseCode = "200", description = "successful operation",
+	                content = @Content(schema = @Schema(implementation = CustomerView.class))),
+	        @ApiResponse(responseCode = "204", description = "Customer not found") })
 	public <T> ResponseEntity<PagedResources<CustomerView>> getAllCustomers(
 			@RequestParam(defaultValue = "0", name = "page") Integer pageNo,
 			@RequestParam(defaultValue = "10", name = "size") Integer pageSize,

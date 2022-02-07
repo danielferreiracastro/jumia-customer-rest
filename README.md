@@ -14,7 +14,7 @@ This API was developed using Springboot 2.1.6.  It uses paging to reduce the ove
 3. Run the command
 	```docker run -p 8080:8080 jumia-api```
 4. Visit: <http://127.0.0.1:8080/v1/customers> (should display a JSON with the customers data)
-
+5. Visit <http://localhost:8080/swagger-ui/index.html> (should display the Swagger Interface)
 
 ## Concepts
 

@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import io.swagger.annotations.ApiModel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,6 @@ import lombok.ToString;
 @Getter
 @Entity
 @NoArgsConstructor
-@ApiModel(value = "Customer Model", description = "Customer Model for customer controller request info to the database")
 public class Customer {
 	@Id
 	@GeneratedValue

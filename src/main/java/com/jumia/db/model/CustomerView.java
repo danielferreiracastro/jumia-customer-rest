@@ -1,6 +1,5 @@
 package com.jumia.db.model;
 
-import io.swagger.annotations.ApiModel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,6 @@ import lombok.ToString;
 @Setter
 @Getter
 @NoArgsConstructor
-@ApiModel(value = "Customer View Model", description = "Customer View Model used to present data")
 public class CustomerView {
 
 	private Long id;

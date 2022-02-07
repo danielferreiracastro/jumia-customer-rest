@@ -30,8 +30,9 @@ public class SQLiteDialect extends Dialect {
         registerColumnType(Types.BLOB, "blob");
         registerColumnType(Types.CLOB, "clob");
         registerColumnType(Types.BOOLEAN, "integer");
+        
     }
-
+    
     public boolean dropConstraints() {
         return false;
     }

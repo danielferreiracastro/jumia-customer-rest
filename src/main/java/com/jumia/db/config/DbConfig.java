@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,7 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
 @EnableJpaRepositories(basePackages = "com.jumia.db.repositories")
-@PropertySource("persistence-sqlite.properties")
+@PropertySource("classpath:persistence-sqlite.properties")
 public class DbConfig {
 
 	@Autowired
@@ -54,11 +53,4 @@ public class DbConfig {
 		em.setJpaProperties(additionalProperties());
 		return em;
 	}
-
-}
-
-@Configuration
-@Profile("sqlite")
-@PropertySource("classpath:persistence-sqlite.properties")
-class SqliteConfig {
 }

@@ -25,7 +25,7 @@ COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN mvn clean install
 # Refer to Maven build -> finalName
-ARG JAR_FILE=target/jumia-spa-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/jumia-spa-1.0.0.jar
 
 
 

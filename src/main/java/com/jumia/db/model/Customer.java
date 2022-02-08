@@ -17,6 +17,11 @@ import lombok.ToString;
 @Getter
 @Entity
 @NoArgsConstructor
+/**
+ * Class the represents the customer table inside SQLLite database
+ * @author dfcastro
+ *
+ */
 public class Customer {
 	@Id
 	@GeneratedValue

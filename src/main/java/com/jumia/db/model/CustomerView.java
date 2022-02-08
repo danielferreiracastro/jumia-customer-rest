@@ -11,6 +11,11 @@ import lombok.ToString;
 @Setter
 @Getter
 @NoArgsConstructor
+/**
+ * Class that represent the visualization of the data to be presented by the presentation layer
+ * @author dfcastro
+ *
+ */
 public class CustomerView {
 
 	private Long id;

@@ -18,8 +18,17 @@ This API was developed using Springboot 2.1.6.  It uses paging to reduce the ove
 
 ## Concepts
 
-Pagination - It uses 3 query string parameters, namely: 'page', 'size' and 'sort' to implement the pagination
+### Features
+- Pagination - It uses 2 query string parameters, namely: 'page', 'size' 
+- Sorting - It uses the parameter 'sort' to sort the results
 
+#### Database Alterations
+To make simpler the filtering of Valid and Not Valid Scenario and the Country filtering I asked to Pedro Rego and Ricardo Taboada if it would be possible to execute an ALTER table so the filtering would become more efficient and neat, filtering everything directly from the Database and avoid traffic of non usable payload.  Pedro authorized and I did the changes.
+
+The Valid and Not Valid numbers were updated inside the Database using the REGEEX supplied in the documentation.  The Country code was replicated inside the table so the queries to filter would run faster.  Instead of doing text comparison (the phone number is TEXT on DB and String on Java) it compares Integers, a better and faster way.
+ 
+### Testing Strategy
+- In order to keep the test as close as possible to the real case use I decided to run the tests using SpringBoot and not Mock any interfaces or object, rather than this I run the Springboot application and fire requests as it should be fired from the Frontend.
 
 ## License
 

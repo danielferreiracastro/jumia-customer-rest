@@ -17,6 +17,11 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.jumia.db.repositories")
 @PropertySource("classpath:persistence-sqlite.properties")
+/**
+ * Configuration class for Database Access
+ * @author dfcastro
+ *
+ */
 public class DbConfig {
 
 	@Autowired

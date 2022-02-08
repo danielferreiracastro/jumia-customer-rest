@@ -2,9 +2,20 @@ package com.jumia.controller.util;
 
 import com.jumia.db.model.Customer;
 import com.jumia.db.model.CustomerView;
-
+/**
+ * Utility class for Customer
+ * @author dfcastro
+ *
+ */
 public class CustomerUtils {
 
+	/**
+	 * Sets the Country info for a Customer View @see CustomerView
+	 * @param customer an instance of @see CustomerView
+	 * @param instance an instance of @see Customer
+	 * @return The supplied instance of @CustomerView with Country name and code 
+	 * filled up if the Country code belongs to the @ see CountryEnum or blank (empty string )otherwise
+	 */
 	public static CustomerView setCountryInfo(Customer customer, CustomerView instance) {
 		if(null == customer) throw new IllegalArgumentException("customer parameter must not be null");
 		if (null == instance) {
@@ -45,6 +56,12 @@ public class CustomerUtils {
 		return instance;
 	}
 
+	/**
+	 * Set the textual information of Phone Validation.
+	 * @param customer an instance of @see CustomerView
+	 * @param instance an instance of @see Customer
+	 * @return The supplied instance of @CustomerView with textual description if the phone number is Valid or Not Valid
+	 */
 	public static boolean validatePhone(Customer customer, CustomerView instance) {
 		if (null == instance) {
 			instance = new CustomerView();

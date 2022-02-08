@@ -2,7 +2,11 @@ package com.jumia.db.dialect;
 
 import org.hibernate.MappingException;
 import org.hibernate.dialect.identity.IdentityColumnSupportImpl;
-
+/**
+ * Class to support the Identity Column
+ * @author dfcastro
+ *
+ */
 public class SQLiteIdentityColumnSupport extends IdentityColumnSupportImpl {
 
     @Override

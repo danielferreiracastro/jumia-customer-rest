@@ -1,5 +1,9 @@
 package com.jumia.controller.util;
-
+/**
+ * Country Enumeration relating Country Name and International Phone Code
+ * @author dfcastro
+ *
+ */
 public enum CountryEnum {
 	
     CAMEROON(237),

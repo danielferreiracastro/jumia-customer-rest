@@ -4,7 +4,11 @@ import java.sql.Types;
 
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.identity.IdentityColumnSupport;
-
+/**
+ * SQLite Dilact to be used.
+ * @author dfcastro
+ *
+ */
 public class SQLiteDialect extends Dialect {
 
     public SQLiteDialect() {

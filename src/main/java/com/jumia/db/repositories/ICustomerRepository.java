@@ -8,7 +8,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.jumia.db.model.Customer;
-
+/**
+ * Interface with repository methods
+ * @author dfcastro
+ *
+ */
 public interface ICustomerRepository extends PagingAndSortingRepository<Customer, Long>, JpaSpecificationExecutor<Customer> {
 	public Page<Customer> findAll(Pageable pageable);
 	

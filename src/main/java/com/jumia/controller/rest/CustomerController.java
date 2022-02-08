@@ -36,6 +36,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RestController
 @RequestMapping("/v1")
 @OpenAPIDefinition(info = @Info(title = "Customer API", version = "2.0", description = "Customer Information"))
+/**
+ * REST Controller responsible for exposing the methods to be fired/consumed by the front end or any external consumer.
+ * @author dfcastro
+ *
+ */
 public class CustomerController {
 	Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
@@ -68,16 +73,16 @@ public class CustomerController {
 			country = null;
 		// End of Pre processing state and country
 
+		// Pre-processing sorting parameters
 		String sorting[] = sortBy.split(",");
 		Sort sort = Sort.by(sorting[0]);
 		Pageable pageable = null;
 		Page<Customer> customers = null;
-
-		// Pre-processing sorting parameters
-		pageable = createPeageable(pageNo, pageSize, sorting, sort);
 		// End of pre-processing sorting parameters
+		
+		pageable = createPeageable(pageNo, pageSize, sorting, sort);
 
-		// Pre-processing filter by country
+		// Selection of what repository method will be consumed based on the numbers of filters.
 		if (null == country && state == null)
 			customers = repository.findAll(pageable);
 		else if (null != country && state == null) {
@@ -87,7 +92,8 @@ public class CustomerController {
 		} else {
 			customers = repository.findAllByCountryAndEstate(pageable,Integer.valueOf(country),Integer.valueOf(state));
 		}
-
+		
+		//Conversion of Customer Entity to CustomerView and later on return a Paged Customer View
 		Page<CustomerView> customerViews = customers.map(new Function<Customer, CustomerView>() {
 			public CustomerView apply(Customer customer) {
 				CustomerView view = null;
@@ -104,6 +110,7 @@ public class CustomerController {
 
 		PagedResources<CustomerView> pr = assembler.toResource(customerViews);
 
+		//Sets the response depending if there is or not content
 		if (customerViews.getTotalElements() != 0) {
 			return new ResponseEntity<>(pr, HttpStatus.OK);
 		} else {

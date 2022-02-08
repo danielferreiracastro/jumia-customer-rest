@@ -28,9 +28,8 @@ RUN mvn clean install
 ARG JAR_FILE=target/jumia-spa-1.0.0.jar
 
 
-
 # cp target/spring-boot-web.jar /opt/app/app.jar
-COPY ${JAR_FILE} app.jar
+RUN cp ${JAR_FILE} /usr/src/myapp/app.jar
 
 # java -jar /opt/app/app.jar
 ENTRYPOINT ["java","-jar","app.jar"]

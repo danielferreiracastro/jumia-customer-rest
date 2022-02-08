@@ -6,6 +6,7 @@ import com.jumia.db.model.CustomerView;
 public class CustomerUtils {
 
 	public static CustomerView setCountryInfo(Customer customer, CustomerView instance) {
+		if(null == customer) throw new IllegalArgumentException("customer parameter must not be null");
 		if (null == instance) {
 			instance = new CustomerView();
 			instance.setId(customer.getId());
